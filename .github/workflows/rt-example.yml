@@ -33,7 +33,7 @@ jobs:
         run: |
           echo "registry=${{ secrets.JF_URL }}/artifactory/api/npm/${{ vars.JF_REPO_NAME }}/" > .npmrc
           echo "${{ secrets.JF_URL }}/artifactory/api/npm/${{ vars.JF_REPO_NAME }}/"
-          echo "${{ secrets.JF_URL }}/artifactory/api/npm/ad-npm-remote/:_auth = ${{ secrets.JF_ACCESS_TOKEN }}" >> .npmrc
+          echo "soleng.jfrog.io/artifactory/api/npm/ad-npm-remote/:_authToken = ${{ secrets.JF_ACCESS_TOKEN }}" >> .npmrc
           echo "always-auth = true" >> .npmrc
           echo "file is..."
           cat .npmrc
