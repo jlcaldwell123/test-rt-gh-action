@@ -35,6 +35,7 @@ jobs:
           echo "{{ secrets.JF_URL }}/artifactory/api/npm/{{ vars.JF_REPO_NAME }}/"
           echo "_auth = ${{ secrets.JF_ACCESS_TOKEN }}" >> .npmrc
           echo "always-auth = true" >> .npmrc
+          echo "file is..."
           cat .npmrc
       - run: |
           jf rt npm-install --build-name=${{ inputs.build_name }}
