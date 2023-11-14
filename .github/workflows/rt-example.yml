@@ -31,7 +31,7 @@ jobs:
       - name: 'Create .npmrc'
         shell: bash
         run: |
-          echo "registry=${{ secrets.JF_URL }}/artifactory/api/npm/${{ vars.JF_REPO_NAME }}/" > .npmrc
+          echo "registry=${{ secrets.JF_URL }}/artifactory/api/npm/${{ vars.JF_REPO_NAME }}/:_auth" > .npmrc
           echo "${{ secrets.JF_URL }}/artifactory/api/npm/${{ vars.JF_REPO_NAME }}/"
           echo "_auth = ${{ secrets.JF_ACCESS_TOKEN }}" >> .npmrc
           echo "always-auth = true" >> .npmrc
