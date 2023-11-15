@@ -38,7 +38,7 @@ jobs:
           echo "always-auth = true" >> .npmrc
           echo "file is..."
           cat .npmrc
-      - run: npm i --legacy-peer-deps
+      - run: jf npm install --legacy-peer-deps
       - name: build
         run: npm run build --if-present
         env:
