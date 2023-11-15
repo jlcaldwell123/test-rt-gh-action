@@ -42,3 +42,13 @@ jobs:
         run: npm run build --if-present
         env:
           CI: ""
+      - name: Publish build
+        run: |
+          # Collect and store environment variables in the build-info
+          jf rt build-collect-env ${{ github.repository }} ${{ github.run_number }}
+
+          # Collect and store VCS details in the build-info
+          jf rt build-add-git ${{ github.repository }} ${{ github.run_number }}
+
+          # Publish the build-info to Artifactory
+          jf rt build-publish ${{ github.repository }} ${{ github.run_number }}
