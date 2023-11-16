@@ -30,15 +30,6 @@ jobs:
           cache: 'npm'
       - name: 'Setup JFrog'
         uses: jfrog/setup-jfrog-cli@v3
-      - name: 'Create .npmrc'
-        shell: bash
-        run: |
-          echo "registry=${{ secrets.JF_URL }}/artifactory/api/npm/${{ vars.JF_REPO_NAME }}/" > .npmrc
-          echo "${{ secrets.JF_URL }}/artifactory/api/npm/${{ vars.JF_REPO_NAME }}/"
-          echo "soleng.jfrog.io/artifactory/api/npm/ad-npm-remote/:_authToken = ${{ secrets.JF_AUTH_TOKEN }}" >> .npmrc
-          echo "always-auth = true" >> .npmrc
-          echo "file is..."
-          cat .npmrc
       - run: jf npm install --legacy-peer-deps --build-name ${{ github.repository }} --build-number ${{ github.run_number }}
       - name: build
         run: npm run build --if-present
