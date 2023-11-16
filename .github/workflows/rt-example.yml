@@ -54,3 +54,6 @@ jobs:
 
           # Publish the build-info to Artifactory
           jf rt build-publish ${{ github.repository }} ${{ github.run_number }}
+
+          # Upload the dist files and tag the build info
+          jf rt upload "dist/*" dupe-npm-dev-virtual --build-name ${{ github.repository }} --build-number ${{ github.run_number }}
